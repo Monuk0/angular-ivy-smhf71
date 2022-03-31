@@ -1,0 +1,100 @@
+<h1>{{ name }}</h1>
+<div>
+  <h1 *ngIf="show; then ifBlock; else elseBlock">hello world</h1>
+  <ng-template #ifBlock>
+    <h1>hi</h1>
+  </ng-template>
+  <ng-template #elseBlock>
+    <h1>else part</h1>
+  </ng-template>
+  <div>
+    <ng-template [ngIf]="shown == 'red'">
+      <h1>red</h1>
+    </ng-template>
+    <ng-template [ngIf]="shown == 'yellow'">
+      <h1>yellow</h1>
+    </ng-template>
+    <ng-template [ngIf]="shown == 'green'">
+      <h1>green</h1>
+    </ng-template>
+  </div>
+  <h1>ngSwitch</h1>
+
+  <div [ngSwitch]="color">
+    <h2 *ngSwitchCase="'blue'" style="color:blue">blue</h2>
+    <h2 *ngSwitchCase="'pink'" style="color:pink">pink</h2>
+    <h2 *ngSwitchCase="'orange'" style="color:orange">orange</h2>
+    <h2 *ngSwitchDefault style="color:red">wrong color</h2>
+  </div>
+
+  <h4 *ngFor="let item of data">
+    {{ item }}
+  </h4>
+
+  <h4 *ngFor="let item of data1">
+    {{ item.name }}
+    {{ item.roll }}
+  </h4>
+
+  <table border="1">
+    <tr>
+      <th>name</th>
+      <th>roll</th>
+    </tr>
+    <tr *ngFor="let item of data1">
+      <td>{{ item.name }}</td>
+      <td>{{ item.roll }}</td>
+    </tr>
+  </table>
+
+  <div [ngClass]="className">Learning ngClass String</div>
+
+  <div [ngClass]="[className, className2]">Learning ngClass array</div>
+
+  <div [ngClass]="{ four: true, two: tempBoolean }">
+    Learning ngClass with boolean expressions
+  </div>
+  <div>
+    <h3>Learning ngStyle</h3>
+    <div [ngStyle]="{ 'background-color': 'red', color: 'white' }">static</div>
+    <div [ngStyle]="{ 'background-color': styleprop, color: 'while' }">
+      Dynamic
+    </div>
+    <div
+      [ngStyle]="{
+        'background-color': styleprop1 === 'yellow' ? 'yellow' : 'gray',
+        color: 'while'
+      }"
+    >
+      Dynamic
+    </div>
+    <div style="background-color:green">hello</div>
+
+    <div>{{ subTitle }}</div>
+    <div>{{ epNum }}</div>
+    <div>{{ user.userId }} {{ user.userName }} {{ user.status }}</div>
+  </div>
+  <div [ngStyle]="{ 'background-color': colorVal }">
+    This is example of the property binding
+  </div>
+  <p [innerHTML]="subTitle"></p>
+  <input type="text" [placeholder]="placeHolderVal" />
+  <a
+    [href]="hrefVal"
+    [attr.updateLink]="updateLink"
+    [attr.data-link]="updateLink"
+    target="_blank"
+    >google</a
+  >
+
+  <h1>Learn two way data binding</h1>
+
+  <input [(ngModel)]="firstName" />
+  <button (click)="readFirstName()">firstName</button>
+  <div>{{ firstName }}</div>
+
+  <app-child
+    [myInput]="'it is preant component'"
+    (myOutput)=" getData($event)"
+  ></app-child>
+</div>
